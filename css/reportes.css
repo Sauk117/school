@@ -1,0 +1,50 @@
+article.third div {
+	color: #1d81b0;
+	display: inline-block;
+    text-align: center;
+    width: 45%;
+    
+ }
+
+article.four div {
+text-align: center;
+width: 100%;
+color: #1d81b0;
+	display: inline-block;
+}	
+
+article.four {
+	background-color: #fff;
+	border: 1px solid #95C8DD;
+	border-radius: 10px;
+	border-top-left-radius: 1px;
+	margin: 0px 0px 20px;
+	padding: 20px
+}
+
+article.left div{
+
+   text-align: left!important;
+}
+
+article.right div {
+	text-align: right!important;
+
+}
+
+div.saved_block article h2{
+	margin: 20px 0px !important;
+}
+
+article.principal h4{
+	text-align: left;
+	color: #1d81b0;
+	margin-bottom: 80px;
+	
+}
+
+p, a{
+   color: #195977;
+   text-align: justify;
+   margin: 10px;
+}

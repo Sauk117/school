@@ -1,0 +1,90 @@
+html,
+body,
+div,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+ol,
+ul,
+li,
+form,
+fieldset,
+legend,
+label,
+table,
+nav,
+section,
+figure {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+a img {
+    border: 0;
+}
+ol,
+ul {
+    list-style: none;
+}
+header,
+footer,
+nav,
+section,
+article,
+hgroup,
+figure {
+    display: block;
+}
+/*legend {
+    display: none;
+}*/
+input,
+textarea,
+select {
+    -webkit-border-radius: 0px;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+}
+input[type="button"],
+textarea[type="button"],
+select[type="button"],
+input[type="submit"],
+textarea[type="submit"],
+select[type="submit"] {
+    -webkit-appearance: none;
+}
+input[type="search"]::-webkit-search-decoration {
+    display: none;
+}
+a {
+    -webkit-touch-callout: none;
+    -moz-touch-callout: none;
+    touch-callout: none;
+    text-decoration: none;
+    color: black;
+}
+body {
+    font: normal normal 100% Trebuchet MS, Arial, sans-serif;
+    background-color: #F5F5F5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: auto;
+    min-width: 20em;
+}
+
+
+form label.error{
+    color: rgb(162, 17, 17);
+    position: absolute;
+       margin-left: -147px;
+}
+
+form input.error{
+    border: 1px solid rgb(162, 17, 17);
+}
