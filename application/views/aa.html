@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+		
+
+</head>
+
+<style type="text/css">
+	body{
+		background-image: url("../../img/bg.png");
+	}
+	input{
+		border: 1px solid #7f9db9;
+		margin: 0px;
+	}
+	label {
+		color: #195977;
+		display: inline-block;
+		font-size: 15px;
+		margin-left: 25px;
+		width: 185px;
+	}
+	 input[type=submit]{
+		border: 1px solid #95C8DD;
+		color: #186990;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 10px;
+		margin: auto;
+		
+		padding: 0 15px;
+		height: 30px;
+		margin-top: 10px;
+	}
+	a{
+	color: #7f9db9;
+	display: inline-block;
+	text-decoration: none;
+	}
+	section{
+		background-color: #DAE7ED;
+		border: 2px solid #fff;
+		border-bottom: 0px;
+		border-top: 0px;
+		margin: auto;
+		height: auto;
+		padding: 15px 20px 0px;
+		width: 330px;
+		border-radius: 10px;
+	}
+</style>
+<body background="../../img/bg.png">
+	<form  method="post" action="<?=base_url("index.php/welcome/login")?>">
+	<section>
+		<?php 
+		if (isset($msg)) {
+			echo "<label>$msg</label>";
+		}
+		?>
+		<label>Usuario</label><br>
+		<input type="text" name="correo" id="correo" maxlength="255" required  placeholder="zaira"/><br><br>
+
+		<label>Contraseña</label><br>
+		<input type="password" name="contrasena" id="contrasena" maxlength="20" required  /><br><br>
+
+		<input type="submit"  value="Entrar" /><br>
+
+		<a href="<?=base_url("index.php/welcome/registrar")?>">Registrar</a>
+		</section>
+	</form>
+	
+
+</body>
+</html>

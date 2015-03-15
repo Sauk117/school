@@ -4,3 +4,6 @@
 */cache/*
 */cache/!index.html
 */cache/!.htaccess
+Logs/inside-acces.log
+Logs/inside-error.log
+application/config/database.php
