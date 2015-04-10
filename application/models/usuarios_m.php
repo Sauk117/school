@@ -49,7 +49,7 @@ class usuarios_m extends CI_Model
 		$this->db->set("apellidom",$post["apellidom"]);
 		$this->db->set("fnacimiento",$post["fnacimiento"]);
 		$this->db->set("curp",$post["curp"]);
-		$this->db->set("tutor",$post["tutor"]);
+		//$this->db->set("tutor",$post["tutor"]);
 		$this->db->set("pais",$post["pais"]);
 		$this->db->set("estados",$post["estado"]);
 		$this->db->set("municipio",$post["municipio"]);
@@ -97,6 +97,53 @@ class usuarios_m extends CI_Model
 		}
 		else
 			return $elementos=array(null);//si no existen regresa un arreglo nulo
+	}
+
+	function agregarDocente($post,$isNew){
+		
+		$this->db->set("nombre",$post["nombre"]);
+		$this->db->set("apellidop",$post["apellidop"]);
+		$this->db->set("apellidom",$post["apellidom"]);
+		$this->db->set("fnacimiento",$post["fnacimiento"]);
+		$this->db->set("curp",$post["curp"]);
+		$this->db->set("pais",$post["pais"]);
+		$this->db->set("estado",$post["estado"]);
+		$this->db->set("municipio",$post["municipio"]);
+		$this->db->set("cp",$post["cp"]);
+		$this->db->set("colonia",$post["colonia"]);
+		$this->db->set("calle",$post["calle"]);
+		$this->db->set("ninterior",$post["ninterior"]);
+		$this->db->set("nexterior",$post["nexterior"]);
+		$this->db->set("tel",$post["tel"]);
+		$this->db->set("cel",$post["cel"]);
+		$this->db->set("correo",$post["correo"]);
+		$this->db->set("matricula",$post["matricula"]);
+		$this->db->set("sexo",$post["sexo"]);
+		$this->db->set("fingreso",$post["fingreso"]);
+		if($isNew)
+			$this->db->insert("docentes");
+		else
+		{
+			$this->db->where("id_docente",$_POST['id']);
+			$this->db->update("docentes");
+		}
+	}
+
+	function getconsecutivo(){
+		$query=$this->db->query('select id_alumno from alumno order by id_alumno desc limit 1 '); // desc desendente 
+		if($query!=null && $query->num_rows()>0)//valida que existandatos
+		{
+			$row = $query-> row_array(); 
+			$consecutivo = $row['id_alumno'] + 1;
+			if ($consecutivo<10)
+				$matricula ='00'.$consecutivo;
+			else
+				$matricula ='0'.$consecutivo;
+			return $matricula;//si existen datos regresa la informacion de la tabla
+		}
+		else
+			return '000';
+	
 	}
 
 

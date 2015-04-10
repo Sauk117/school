@@ -20,7 +20,32 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('control');
 	}
+	public function controld()
+	{
+		$this->load->view('controld');
+	}
+	public function docentes()
+	{
+		$data['paises']=$this->catalogos->getcatalogoinfo('id_pais','nombre','pais','');
+		$this->load->view('docentes',$data);
+	}
 
+	public function agregarDocentes()
+	{
+		
+		if($_POST['id']==0)
+			$this->usuarios->agregarDocente($_POST,true);
+		else
+			$this->usuarios->agregarDocente($_POST,false);
+		redirect("Welcome/bienvenido");
+
+
+		
+	}
+	public function calificaciones()
+	{
+		$this->load->view('calificaciones');
+	}
 	public function login()
 	{
 		$login=$this->usuarios->getlogin($_POST);
@@ -45,15 +70,14 @@ class Welcome extends CI_Controller {
 	public function registrar()
 	{
 		$data['paises']=$this->catalogos->getcatalogoinfo('id_pais','nombre','pais','');
-		$data['usuario']=$this->catalogos->getcatalogoinfo('id_tipo','t_usuario','tusuario','');
-																			//nombre tabla
+		$data['usuario']=$this->catalogos->getcatalogoinfo('id_tipo','t_usuario','tusuario','');			//nombre tabla
 		$this->load->view('registrar',$data);
-
-
 	}
 	public function bienvenido()
 	{	
 		$data['paises']=$this->catalogos->getcatalogoinfo('id_pais','nombre','pais','');
+		$data['grupos']=$this->catalogos->getcatalogoinfo('id_grupo','grupo','grupo','');
+		$data['consecutivo']=$this->usuarios->getconsecutivo();
 		$this->load->view('bienvenido',$data);
 		//$this->load->view('registrar',$data);
 
@@ -113,6 +137,16 @@ class Welcome extends CI_Controller {
 		$this->load->view("vista-de-tabla",$data);
 		
 	}
+	public function getDocenteById()
+	{
+		$info=$this->usuarios->getElementById("docentes","where id_docente=".$_GET["id"]);
+		$data['docentes']=$info;
+		$data['paises']=$this->catalogos->getcatalogoinfo('id_pais','nombre','pais','');
+		$data['estados']=$this->catalogos->getcatalogoinfo('id_estado','nombre','estado',"where id_pais=$info[pais]");
+		$data['municipios']=$this->catalogos->getcatalogoinfo('id_municipio','nombre','municipio',"where id_estado=$info[estados]");
+		$this->load->view('bienvenido',$data);
+	}
+
 	public function getgrupos()
 	{
 		$consulta="select * from grupos where activo = 1";//depende de la condicio de alumnos activos o inactivos

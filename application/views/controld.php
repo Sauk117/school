@@ -67,35 +67,22 @@
             <a class="navbar-brand" href="#"></a>   
             <ul class="nav navbar-nav">             
                 <li ><a href="<?=base_url("index.php/welcome/bienvenido")?>">Alumnos</a></li>
-                <li class="active"><a href="<?=base_url("index.php/welcome/control")?>">Control de Alumnos</a></li>  
+                <li ><a href="<?=base_url("index.php/welcome/control")?>">Control de Alumnos</a></li>  
                 <li ><a href="<?=base_url("index.php/welcome/docentes")?>">Docentes</a></li>         
-                <li><a href="<?=base_url("index.php/welcome/controld")?>">Control Docentes</a></li>   
+                <li class="active"><a href="<?=base_url("index.php/welcome/controld")?>">Control Docentes</a></li>   
                 <li><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>     
             </ul>
         </div>
         <div class="panel-body" >
             <div class="form-group">        
-                
-                <div style="width:100%;text-align:center;margin-top:10%;">
-                <div style="margin-left: 221px;">
-                    <form id="form-niveles" >
-                        <select id="nivel" name = "nivel" class="form-control input-sm">
-                            <option value="-1">Seleccione uno</option>
-                            <option value="1">Universidad</option>
-                        </select>
-                        <select id="grupo" name = "grupo" class="form-control input-sm">
-                            <option value="-1">Seleccione uno</option>
-                        </select>
-                        <input type="submit" value="Buscar" class="btn btn-info btn-block btn-sm"/>
-                    </form>
-                </div>
-                <article class="second">
-                    <section id="contentTable" class="table table_control">
-                    <center></center>
-                    </section>
-                </article>    
-                </div> 
-            
+
+
+
+    <section>
+        <div>-<?php echo $alumno['nombre'] ?></div><div>-<?php if($alumno['turno']==1){echo "Matutino";}else if ($alumno['turno']==2){echo "Vespertino";} ?></div><div>-<?php echo $alumno['matricula'] ?></div><div>-<a href=<?=base_url('index.php/welcome/getAlumnoById?id='.$alumno['id_alumno'])?> >Ver</a>/ </div>
+    </section>
+ 
+   
                      
             </div>
         </div>
