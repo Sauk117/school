@@ -39,6 +39,23 @@
         <script type="text/javascript" >
         var urlajax="<?= base_url('index.php/welcome/')?>";//url del controlador
         </script>
+         <?php
+        if(!isset($docentes))
+        {
+        ?>
+            <script type="text/javascript">
+            var consecutivo= '<?= $consecutivo ?>';
+            var anio="2015";
+           
+            $(document).ready(
+                function(){
+                    $("#matricula").val(anio+consecutivo);
+                  
+                });
+            </script>
+        <?php
+        }
+        ?>
 
 
 </head>
@@ -68,19 +85,19 @@
 
                     <div class="span6">       
                     
-                    <form role="form"  method="post" action="<?=base_url("index.php/welcome/agregarDocentes")?>">
+                    <form role="form" id="docente"  method="post" action="<?=base_url("index.php/welcome/agregarDocentes")?>">
                         <div class="span6">
                 
                 <label>Nombre</label>
-                <input type="text"  name="nombre" id="nombre" class="form-control input-sm let" required />    
+                <input type="text"  name="nombre" id="nombre" class="form-control input-sm let" required  <?php if(isset($docentes)){echo "value=".$docentes["nombre"];}?> />    
                 <label>Apellido P</label>
-                <input type="text" name="apellidop" id="apellidop" class="form-control input-sm let" required  />    
+                <input type="text" name="apellidop" id="apellidop" class="form-control input-sm let" required <?php if(isset($docentes)){echo "value=".$docentes["apellidop"];}?>  />    
                 <label>Apellido M</label>
-                <input type="text" name="apellidom" id="apellidom" class="form-control input-sm let" required  / >
+                <input type="text" name="apellidom" id="apellidom" class="form-control input-sm let" required <?php if(isset($docentes)){echo "value=".$docentes["apellidom"];}?>  / >
                 <label>Fecha de nacimiento</label>
-                <input type="date"  name="fnacimiento" class="form-control input-sm" id="fnacimiento" style="width: 155px;" required  />
+                <input type="date"  name="fnacimiento" class="form-control input-sm" id="fnacimiento" style="width: 155px;" required <?php if(isset($docentes)){echo "value=".$docentes["fnacimiento"];}?>  />
                 <label>Curp</label>
-                <input type="text" name="curp" id="curp" class="form-control input-sm" required  />  
+                <input type="text" name="curp" id="curp" class="form-control input-sm" required <?php if(isset($docentes)){echo "value=".$docentes["curp"];}?>  />  
                 <label>Pais</label>
                 <select id="pais" name="pais" class="form-control input-sm">
                 <option value="-1">Seleccione uno</option>
@@ -130,7 +147,7 @@
                     ?>
                 </select>
                 <label>CP</label>
-                <input type="text" name="cp" id="cp" class="form-control input-sm num" required />
+                <input type="text" value="fhtgfyj"> name="cp" id="cp" class="form-control input-sm num" required <?php if(isset($docentes)){echo "value=".$docentes["cp"];}?>  />
                 <label>Colonia</label>
                 <input type="text" name="colonia" id="colonia" class="form-control input-sm " required  />
                 <label>Calle</label>
@@ -146,10 +163,12 @@
                 <label>Correo</label>
                 <input type="email" name="correo" id="correo" class="form-control input-sm" required  />
                 <label>Matricula</label>
-                <input type="text" name="matricula" id="matricula" class="form-control input-sm num" required  />
+                <input type="text" name="matricula" id="matricula" class="form-control input-sm num" required disabled/>
                 <label>Nivel</label>
                 <SELECT name="nivel" id="nivel" class="form-control input-sm">
                     <option value="1">Universidad</option>
+                    <option value="2">Secundaria</option>
+                    <option value="3">Primaria</option>
                     
                 </SELECT>
                 

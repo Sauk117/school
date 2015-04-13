@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="../../lib/bootstrap/3.0.0/css/bootstrap.min.css">
     <script type="text/javascript" src="../../lib/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/general.js"></script>
-    <script type="text/javascript" src="../../js/Registro.js"></script> 
+    <!--<script type="text/javascript" src="../../js/Registro.js"></script> -->
     <script type="text/javascript" src="../../js/control.js"></script> 
     <script>
         var urlajax="<?= base_url('index.php/welcome/')?>";//url del controlador
@@ -67,44 +67,44 @@
             <a class="navbar-brand" href="#"></a>   
             <ul class="nav navbar-nav">             
                 <li ><a href="<?=base_url("index.php/welcome/bienvenido")?>">Alumnos</a></li>
-                <li class="active"><a href="<?=base_url("index.php/welcome/control")?>">Control de Alumnos</a></li>  
+                <li ><a href="<?=base_url("index.php/welcome/control")?>">Control de Alumnos</a></li>  
                 <li ><a href="<?=base_url("index.php/welcome/docentes")?>">Docentes</a></li>         
-                <li><a href="<?=base_url("index.php/welcome/controld")?>">Control Docentes</a></li>   
+                <li class="active"><a href="<?=base_url("index.php/welcome/controld")?>">Control Docentes</a></li>   
                 <li><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>     
             </ul>
         </div>
         <div class="panel-body" >
-            <div class="form-group">        
-                
-                <div style="width:100%;text-align:center;margin-top:10%;">
-                <div style="margin-left: 221px;">
-                    <form id="form-niveles" >
-                        <select id="nivel" name = "nivel" class="form-control input-sm">
-                            <option value="-1">Seleccione uno</option>
-                            <option value="1">Universidad</option>
-                            <option value="2">Secundaria</option>
-                            <option value="3">Primaria</option>
-                        </select>
+<div class="form-group">        
+    <section>
+        <div class="form-group">  
+            <div style="width:100%;text-align:center;margin-top:10%;">
+                <form>
+                    <h3><strong>Nombre del profesor:</strong><?=$info['grupos'][0]["nombre"]?></h3><br/>
+                    <h3><strong>Grupos de <?=$info['grupos'][0]["nivel"]?></strong></h3>
+                    <?php foreach ($info['grupos'] as $grupo  ) {?>
+                    <input type="checkbox" value="<?=$grupo["id_grupo"]?>" name="grupo[]" /><?=$grupo["grupo"]?>
+                    
+                <?php
+                }
+                ?>
+                <h3><strong>Materias</strong></h3>
+                    <?php foreach ($info['materias'] as $materias) {
 
-                <SELECT  name="turno" id="turno" class="form-control input-sm" >
-                    <option value="1" <?php if(isset($alumno) && $alumno["turno"]==1){ echo "selected='selected'";} ?> >Matutino</option>
-                    <option value="2" <?php if(isset($alumno) && $alumno["turno"]==2){ echo "selected='selected'";} ?>>Vespertino</option>
-                </SELECT>
-                        <select id="grupo" name = "grupo" class="form-control input-sm">
-                            <option value="-1">Seleccione uno</option>
-                        </select><br>
-                        <input type="submit" value="Buscar" class="btn btn-info btn-block btn-sm"/>
-                    </form>
-                </div>
-                <article class="second">
-                    <section id="contentTable" class="table table_control">
-                    <center></center>
-                    </section>
-                </article>    
-                </div> 
-            
-                     
-            </div>
+                        echo "<h3><strong>Grupo</strong></h3>";
+                        foreach ($materias as $materia) {
+                        ?>                        
+                        <input type="checkbox" value="<?=$materia["id_materia"]?>" name="materias[]" /><?=$materia["materia"]?>
+                    
+                <?php
+                    }
+                }
+                ?>
+                 <center><input type="submit" style="margin-left: 70px;" value="Guardar" class="btn btn-info btn-block"></center>  
+                </form>
+             </div> 
+        </div>
+    </section>
+</div>
         </div>
     </div>
 </body>

@@ -11,4 +11,13 @@ $(document).ready(function(){
             e.preventDefault();
         }
     });
+        $("#docente").submit(function(e){
+        $("#matricula").removeAttr('disabled');
+        
+    });
+
+        $("#alumno").submit(function(e){
+        $("#matricula").removeAttr('disabled');
+        
+    });
 });

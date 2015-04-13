@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="../../lib/bootstrap/3.0.0/css/bootstrap.min.css">
     <script type="text/javascript" src="../../lib/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/general.js"></script>
-    <script type="text/javascript" src="../../js/Registro.js"></script> 
+    <!--<script type="text/javascript" src="../../js/Registro.js"></script> -->
     <script type="text/javascript" src="../../js/control.js"></script> 
     <script>
         var urlajax="<?= base_url('index.php/welcome/')?>";//url del controlador
@@ -79,7 +79,32 @@
 
 
     <section>
-        <div>-<?php echo $alumno['nombre'] ?></div><div>-<?php if($alumno['turno']==1){echo "Matutino";}else if ($alumno['turno']==2){echo "Vespertino";} ?></div><div>-<?php echo $alumno['matricula'] ?></div><div>-<a href=<?=base_url('index.php/welcome/getAlumnoById?id='.$alumno['id_alumno'])?> >Ver</a>/ </div>
+            <div class="form-group">  <center>      
+                
+                <div style="width:100%;text-align:center;margin-top:10%;">
+                <div style="margin-left: 221px;">
+                    <form id="form-nivelesd" >
+                        <select id="nivel" name = "nivel" class="form-control input-sm">
+                            <option value="-1">Seleccione uno</option>
+                            <option value="1">Universidad</option>
+                            <option value="2">Secundaria</option>
+                            <option value="3">Primaria</option>
+                        </select>
+
+               
+                        
+                        <input type="submit" value="Buscar" class="btn btn-info btn-block btn-sm"/>
+                    </form>
+                </div>
+                <article class="second">
+                    <section id="contentTable" class="table table_control">
+                    <center></center>
+                    </section>
+                </article>    
+                </center></div> 
+            
+                     
+            </div>
     </section>
  
    

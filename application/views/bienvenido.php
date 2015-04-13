@@ -39,24 +39,26 @@
         var urlajax="<?= base_url('index.php/welcome/')?>";//url del controlador
         </script>
 
-        <script type="text/javascript">
-        var consecutivo= '<?= $consecutivo ?>';
-        var anio="0015";
-        var nivel="00";
-         $(document).ready(
-          function(){
-        $("#matricula").val(anio+nivel+consecutivo);
-        $("#fingreso").click(function(event){
-            alert("hola");
-            anio=$("#fingreso").val().substring(6)
-            $("#matricula").val(anio+nivel+consecutivo);
-
-        });
-       
-
-          }
-        );
-</script>
+        <?php
+        if(!isset($alumno))
+        {
+        ?>
+            <script type="text/javascript">
+            var consecutivo= '<?= $consecutivo ?>';
+            var anio="2015";
+            var nivel="00";
+            $(document).ready(
+                function(){
+                    $("#matricula").val(anio+nivel+consecutivo);
+                    $("#nivel").change(function(event){
+                        nivel='0'+$("#nivel").val();
+                        $("#matricula").val(anio+nivel+consecutivo);
+                    });
+                });
+            </script>
+        <?php
+        }
+        ?>
 
 </head>
 
@@ -79,7 +81,7 @@
             </ul>
         </div>
         <div class="panel-body" >
-        <form role="form" method="post" action="<?=base_url("index.php/welcome/agregaralumno")?>">
+        <form role="form" id="alumno" method="post" action="<?=base_url("index.php/welcome/agregaralumno")?>">
                 <!--<div class="form-group"> -->
             <div class="span6">
                 
@@ -94,7 +96,7 @@
                 <label>Curp</label>
                 <input type="text" name="curp" id="curp" class="form-control input-sm" required <?php if(isset($alumno)){echo "value=".$alumno["apellidop"];}?> />  
                 <label>Pais</label>
-                <select id="pais" name="pais" class="form-control input-sm">
+                <select id="pais" name="pais" class="form-control input-sm" >
                 <option value="-1">Seleccione uno</option>
                 <?php foreach($paises as $pais){  ?>
                 <option value="<?= $pais['id']; ?>" <?php if(isset($alumno)&&$alumno['pais']==$pais['id']){echo "selected='selected'";}?>><?= $pais['nombre']; ?></option>
@@ -102,11 +104,11 @@
                 ?>
                 </select>
                 <label>Estado</label>
-                <select id="estado" name="estado" class="form-control input-sm">
+                <select id="estado" name="estado" class="form-control input-sm" required = " required ">
                     <?php
                     if(isset($alumno))
                     {
-                        echo "<option value='-1'>Seleccione uno</option>";
+                        echo "<option >Seleccione uno</option>";
                         $select="";
                         foreach ($estados as $estado)
                         {
@@ -116,12 +118,12 @@
                         }
                     } 
                     else
-                        echo "<option value='-1'>Vacío</option>";
+                        echo "<option >Vacío</option>";
                     ?>
                     
                 </select>
                 <label>Municipio</label>
-                <select id="municipio" name="municipio" class="form-control input-sm">
+                <select id="municipio" name="municipio" class="form-control input-sm" required>
                      <?php
                     if(isset($alumno))
                     {
@@ -155,13 +157,13 @@
                 <label>Correo</label>
                 <input type="email" name="correo" id="correo" class="form-control input-sm" required <?php if(isset($alumno)){echo "value=".$alumno["correo"];}?> />
                 <label>Matricula</label>
-                <input type="text" name="matricula" id="matricula" class="form-control input-sm num" required <?php if(isset($alumno)){echo "value=".$alumno["matricula"];}?> />
+                <input type="text" name="matricula" id="matricula" class="form-control input-sm num" required <?php if(isset($alumno)){echo "value=".$alumno["matricula"];}?> disabled />
                 <label>Nivel</label>
                 <SELECT name="nivel" id="nivel" class="form-control input-sm">
-                    <option value="1">Universidad</option>
-                    <option value="2">Secundaria</option>
-                    <option value="3">Primaria</option>
-                    
+                    <option value="0">Seleccione uno</option>
+                    <option value="1" <?php if(isset($alumno) && $alumno["nivel"]==1){ echo "selected='selected'";}?> >Universidad</option>
+                    <option value="2" <?php if(isset($alumno) && $alumno["nivel"]==2){ echo "selected='selected'";}?> >Secundaria</option>
+                    <option value="3" <?php if(isset($alumno) && $alumno["nivel"]==3){ echo "selected='selected'";}?> >Primaria</option>
                     
                 </SELECT>
                 <label>Grado</label>
@@ -186,12 +188,12 @@
                 </select>
                 <label>Turno</label>
                 <SELECT  name="turno" id="turno" class="form-control input-sm" >
-                    <option value="1">Matutino</option>
-                    <option value="2">Vespertino</option>
+                    <option value="1" <?php if(isset($alumno) && $alumno["turno"]==1){ echo "selected='selected'";} ?> >Matutino</option>
+                    <option value="2" <?php if(isset($alumno) && $alumno["turno"]==2){ echo "selected='selected'";} ?>>Vespertino</option>
                 </SELECT>
                 <label>Sexo</label>
-                <SELECT  name="sexo" id="sexo" class="form-control input-sm" >
-                    <option value="1">Maculino</option>
+                <SELECT  name="sexo" id="sexo" class="form-control input-sm" required>
+                    <option value="1">Masculino</option>
                     <option value="2">Femenino</option>
                 </SELECT>
                 <label>Fecha ingreso</label>
@@ -203,7 +205,7 @@
                 else
                     echo "<input type='hidden' name='id' value='0' />";
                 ?>
-                <center><input type="submit" style="margin-left: 70px;" value="Registrarse" class="btn btn-info btn-block"></center>
+                <center><input type="submit" style="margin-left: 70px;" value="Guardar" class="btn btn-info btn-block"></center>
             </div>
                        
                 </form>

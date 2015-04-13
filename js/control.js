@@ -6,6 +6,12 @@ $(document).ready(function(){
 		e.preventDefault();
 		$.post(urlajax+"/getAlumnos",$("#form-niveles").serialize(),gotTable);
 	});
+	$("#form-nivelesd").submit(function(e){
+		e.preventDefault();
+		$.post(urlajax+"/getDocenteS",$("#form-nivelesd").serialize(),gotTable);
+	});
+
+	
 });
 function gotTable(html)
 {

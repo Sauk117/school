@@ -120,6 +120,7 @@ class usuarios_m extends CI_Model
 		$this->db->set("matricula",$post["matricula"]);
 		$this->db->set("sexo",$post["sexo"]);
 		$this->db->set("fingreso",$post["fingreso"]);
+		$this->db->set("nivel",$post["nivel"]);
 		if($isNew)
 			$this->db->insert("docentes");
 		else
@@ -145,6 +146,46 @@ class usuarios_m extends CI_Model
 			return '000';
 	
 	}
+	function removeAlumnoById($id)
+	{
+		$this->db->set("activo",0);
+		$this->db->where("id_alumno",$id);
+		$this->db->update("alumno");
 
+	}
+	function removeDocenteById($id)
+	{
+		$this->db->set("activo",0);
+		$this->db->where("id_docente",$id);
+		$this->db->update("docentes");
+
+	}
+		function getconsecutivod(){
+		$query=$this->db->query('select id_docente from docentes order by id_docente desc limit 1 '); // desc desendente 
+		if($query!=null && $query->num_rows()>0)//valida que existandatos
+		{
+			$row = $query-> row_array(); 
+			$consecutivo = $row['id_docente'] + 1;
+			if ($consecutivo<10)
+				$matricula ='00'.$consecutivo;
+			else
+				$matricula ='0'.$consecutivo;
+			return $matricula;//si existen datos regresa la informacion de la tabla
+		}
+		else
+			return '000';
+	
+	}
+	function asignar ($id)
+	{
+		$grupos=$this->getElementsFromTable("select d.nivel, nombre, id_grupo, grupo, grado from docentes d
+		join grupo g on d.nivel=g.nivel where id_docente=$id");
+
+		foreach ($grupos as $grupo) 
+		{
+			$materias[]=$this->getElementsFromTable("select * from materias where grado=$grupo[grado] and nivel=$grupo[nivel]");
+		}
+		return array('grupos' =>$grupos ,'materias'=>$materias );
+	}
 
 }

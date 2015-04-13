@@ -31,14 +31,14 @@ function gotestados(respuesta){
 	$("#estado option").remove();
 	if(d!=null)
 	{
-		$("#estado").append($("<option value='-1'>- Seleccione uno</option>"));
+		$("#estado").append($("<option >- Seleccione uno</option>"));
 		for(i=0;i<d.length;i++)
 		{
 			$("#estado").append($("<option value="+d[i].id+">"+d[i].nombre+"</option>"));
 		}
 	}
 	else
-		$("#estado").append($("<option value='-1'>- Vacío</option>"));
+		$("#estado").append($("<option >- Vacío</option>"));
 }
 
 function gotmunicipios(respuesta){
@@ -54,4 +54,27 @@ function gotmunicipios(respuesta){
 	}
 	else
 		$("#municipio").append($("<option value='-1'>- Vacío</option>"));
+}
+$(document).ready(function (){
+	$("#nivel").change(function() { 
+		$.post(urlajax+"/getgruposbyajax",{"nivel":$("#nivel").val(),"turno":$("#turno").val()},gotgrupos);
+	});
+	$("#turno").change(function() { 
+		$.post(urlajax+"/getgruposbyajax",{"nivel":$("#nivel").val(),"turno":$("#turno").val()},gotgrupos);
+	});
+
+});
+function gotgrupos(respuesta){
+	d=$.parseJSON(respuesta);
+	$("#grupo option").remove();
+	if(d!=null)
+	{
+		$("#grupo").append($("<option value='-1'>- Seleccione uno</option>"));
+		for(i=0;i<d.length;i++)
+		{
+			$("#grupo").append($("<option value="+d[i].id+">"+d[i].nombre+"</option>"));
+		}
+	}
+	else
+		$("#grupo").append($("<option value='-1'>- Vacío</option>"));
 }
