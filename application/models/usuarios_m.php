@@ -178,14 +178,28 @@ class usuarios_m extends CI_Model
 	}
 	function asignar ($id)
 	{
-		$grupos=$this->getElementsFromTable("select d.nivel, nombre, id_grupo, grupo, grado from docentes d
-		join grupo g on d.nivel=g.nivel where id_docente=$id");
+		$niveles=$this->getElementsFromTable("select id_nivel id, nivel from nivel;");
 
-		foreach ($grupos as $grupo) 
+		foreach ($niveles as $nivel) 
 		{
-			$materias[]=$this->getElementsFromTable("select * from materias where grado=$grupo[grado] and nivel=$grupo[nivel]");
+			$materias=$this->getElementsFromTable("select * from materias where nivel=$nivel[id];");
+			$grupos=$this->getElementsFromTable("select * from grupo where nivel=$nivel[id]");
+			$tabla[] = array('nivel' =>$nivel , 'materias' => $materias , 'grupos' => $grupos);
 		}
-		return array('grupos' =>$grupos ,'materias'=>$materias );
+		return $tabla;
 	}
-
+	function getusuarios()
+	{
+		return $this-> getElementsFromTable("select id_usuario id,nombre,correo,estatus,falta from usuario");
+	}
+	function cambiar_estatus($post)
+	{
+		if($post["value"]==1)
+			$estatus=0;
+		else if($post["value"]==0)
+			$estatus=1;
+		$this->db->set("estatus", $estatus);
+		$this->db->where("id_usuario",$post['id']);
+		$this->db->update("usuario");
+	}
 }

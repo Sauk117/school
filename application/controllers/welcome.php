@@ -190,5 +190,14 @@ class Welcome extends CI_Controller {
 		//convierte el arreglo de datos en un objeto JSON
     	echo  json_encode($respuesta);
 	}
+	public function usuarios()
+	{
+		$data['usuarios'] = $this->usuarios->getusuarios();
+		$this->load->view('usuarios',$data);
+	}
+	public function cambiar_estatus()
+	{
+		$respuesta=$this->usuarios->cambiar_estatus($_POST);
+	}
 }
 
