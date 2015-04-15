@@ -4,23 +4,18 @@
     input, input[date], select{
         width: 200px!important;
     }
-
-
     article.second {
         padding: 20px;
         width: 768px;
           margin-left: 159px;
     }
-    
-
     article.second .table .table_th {
         background-color: #A9D5E9;
         color: #436477;
         font-weight: bold;
         height: 30px;
         line-height: 30px;
-    }
-       
+    }  
     article.second .table div {
         background-color: #fff;
         border: 1px solid #95C8DD;
@@ -36,7 +31,6 @@
         float: left;
         margin-right: 20px!important;
     }
-    
 </style>
 <head>
      <meta charset="utf-8">
@@ -51,13 +45,8 @@
     <script>
         var urlajax="<?= base_url('index.php/welcome/')?>";//url del controlador
     </script>
-
-
 </head>
-
 <body background="../../img/bg.png">
-
-
 <div class="container" id="container1" >
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -70,7 +59,8 @@
                 <li class="active"><a href="<?=base_url("index.php/welcome/control")?>">Control de Alumnos</a></li>  
                 <li ><a href="<?=base_url("index.php/welcome/docentes")?>">Docentes</a></li>         
                 <li><a href="<?=base_url("index.php/welcome/controld")?>">Control Docentes</a></li>   
-                <li><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>     
+                <li><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>
+                <li ><a href="<?=base_url("index.php/welcome/usuarios")?>">Usuarios</a></li>      
             </ul>
         </div>
         <div class="panel-body" >

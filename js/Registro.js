@@ -62,6 +62,9 @@ $(document).ready(function (){
 	$("#turno").change(function() { 
 		$.post(urlajax+"/getgruposbyajax",{"nivel":$("#nivel").val(),"turno":$("#turno").val()},gotgrupos);
 	});
+	$("#materia").change(function() { 
+		$.post(urlajax+"/getmateriasbyajax",{"nivel":$("#nivel").val(),},gotmaterias);
+	});
 
 });
 function gotgrupos(respuesta){
@@ -77,4 +80,18 @@ function gotgrupos(respuesta){
 	}
 	else
 		$("#grupo").append($("<option value='-1'>- Vacío</option>"));
+}
+function gotmaterias(respuesta){
+	d=$.parseJSON(respuesta);
+	$("#materia option").remove();
+	if(d!=null)
+	{
+		$("#materia").append($("<option value='-1'>- Seleccione uno</option>"));
+		for(i=0;i<d.length;i++)
+		{
+			$("#materia").append($("<option value="+d[i].id+">"+d[i].nombre+"</option>"));
+		}
+	}
+	else
+		$("#materia").append($("<option value='-1'>- Vacío</option>"));
 }

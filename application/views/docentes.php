@@ -75,7 +75,8 @@
                     <li><a href="<?=base_url("index.php/welcome/control")?>">Control de Alumnos</a></li>  
                     <li class="active"><a href="<?=base_url("index.php/welcome/docentes")?>">Docentes</a></li>          
                     <li><a href="<?=base_url("index.php/welcome/controld")?>">Control Docentes</a></li>  
-                    <li ><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>    
+                    <li ><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>
+                    <li ><a href="<?=base_url("index.php/welcome/usuarios")?>">Usuarios</a></li>    
                 </ul>
             </div>
             <div class="panel-body" >
@@ -147,7 +148,7 @@
                     ?>
                 </select>
                 <label>CP</label>
-                <input type="text" value="fhtgfyj"> name="cp" id="cp" class="form-control input-sm num" required <?php if(isset($docentes)){echo "value=".$docentes["cp"];}?>  />
+                <input type="text"  name="cp" id="cp" class="form-control input-sm num" required <?php if(isset($docentes)){echo "value=".$docentes["cp"];}?>  />
                 <label>Colonia</label>
                 <input type="text" name="colonia" id="colonia" class="form-control input-sm " required  />
                 <label>Calle</label>

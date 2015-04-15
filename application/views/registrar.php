@@ -41,7 +41,7 @@
 			            <label>Correo</label>
 			            <input type="email" name="correo" id=correo"" class="form-control input-sm"  required> 
 			            <label>Contraseña</label>
-			            <input type="password" name="contrasena" id="contrasena" class="form-control input-sm" >
+			            <input type="password" name="contrasena" id="contrasena" class="form-control input-sm"  minlength=8 >
 			            <label>Confirmar contraseña</label>
 			            <input type="password" name="contrasena1" id="contrasena1" class="form-control input-sm" >
 			            <label>Pais</label>

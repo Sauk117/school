@@ -1,7 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Welcome extends CI_Controller {
-
 	function __construct()
 	{
 		parent::__construct();//invoca el constructor
@@ -10,12 +8,10 @@ class Welcome extends CI_Controller {
 		$this->load->model('catalogos_m','catalogos'); //invoca al modelo
 		$this->load->model('usuarios_m','usuarios');
 	}
-
 	public function index()
 	{
 		$this->load->view('login');
 	}
-
 	public function control()
 	{
 		$this->load->view('control');
@@ -30,7 +26,6 @@ class Welcome extends CI_Controller {
 		$data['consecutivo']=$this->usuarios->getconsecutivod();
 		$this->load->view('docentes',$data);
 	}
-
 	public function agregarDocentes()
 	{
 		
@@ -38,10 +33,7 @@ class Welcome extends CI_Controller {
 			$this->usuarios->agregarDocente($_POST,true);
 		else
 			$this->usuarios->agregarDocente($_POST,false);
-		redirect("Welcome/docentes");
-
-
-		
+		redirect("Welcome/docentes");	
 	}
 	public function calificaciones()
 	{
@@ -61,7 +53,6 @@ class Welcome extends CI_Controller {
 			$this->load->view("login", array('msg' =>$login["message"]));
 		}
 	}
-
 	public function agregarusuario()
 	{
 		$this->usuarios->agregarusuarios($_POST);
@@ -81,7 +72,6 @@ class Welcome extends CI_Controller {
 		$data['consecutivo']=$this->usuarios->getconsecutivo();
 		$this->load->view('bienvenido',$data);
 		//$this->load->view('registrar',$data);
-
 	}
 	public function agregaralumno()
 	{
@@ -91,7 +81,6 @@ class Welcome extends CI_Controller {
 			$this->usuarios->agregaralumnos($_POST,false);
 		redirect("Welcome/bienvenido");
 	}
-	
 	public function getestados()
 	{	
 		//pedimos los estados con el pais seleccionado
@@ -101,7 +90,6 @@ class Welcome extends CI_Controller {
 		//convierte el arreglo de datos en un objeto JSON
     	echo  json_encode($respuesta);
 	}
-
 	public function getmunicipios()
 	{	
 		//pedimos los estados con el pais seleccionado
@@ -136,10 +124,8 @@ class Welcome extends CI_Controller {
 		$consulta="select * from alumno where nivel $nivel and grupo $grupo AND activo=1";//depende de la condicio de alumnos activos o inactivos
 		$data["headers"]=array("Nombre","Turno","Matricula","Acción");
 		$data["alumnos"]=$this->usuarios->getElementsFromTable($consulta);
-		$this->load->view("vista-de-tabla",$data);
-		
+		$this->load->view("vista-de-tabla",$data);	
 	}
-
 	public function getDocenteById()
 	{
 		$info=$this->usuarios->getElementById("docentes","where id_docente=".$_GET["id"]);
@@ -159,25 +145,13 @@ class Welcome extends CI_Controller {
 		$consulta="select * from docentes where nivel $nivel  AND activo=1";//depende de la condicio de alumnos activos o inactivos
 		$data["headers"]=array("Nombre","Nivel","Matricula","Acción");
 		$data["docentes"]=$this->usuarios->getElementsFromTable($consulta);
-		$this->load->view("vista-de-tablad",$data);
-		
+		$this->load->view("vista-de-tablad",$data);	
 	}
-
 	public function getgrupos()
 	{
 		$consulta="select * from grupos where activo = 1  ";//depende de la condicio de alumnos activos o inactivos
 		$this->usuarios->getElementsFromTable($consulta);
 	}
-	/*public function getProfesores()
-	{
-		public function getAlumnos()
-	{
-		$consulta="select * from Profesores where activo = 1";//depende de la condicio de alumnos activos o inactivos
-		$this->usuarios->getElementsFromTable($consulta)
-	}
-	}*/
-
-
 	public function getgruposbyajax()
 	{
 		//pedimos los estados con el pais seleccionado
@@ -193,7 +167,6 @@ class Welcome extends CI_Controller {
 		$this->usuarios->removeAlumnoById($_GET["id"]);
 		redirect("Welcome/control");
 	}
-
 	public function removeDocenteById()
 	{
 		$this->usuarios->removeDocenteById($_GET["id"]);
@@ -203,6 +176,19 @@ class Welcome extends CI_Controller {
 	{
 		$data["info"]=$this->usuarios->asignar($_GET["id"]);
 		$this->load->view("asignar",$data);
+	}
+	public function getmaterias()
+	{
+		$consulta="select * from materias where activo = 1  ";//depende de la condicio de alumnos activos o inactivos
+		$this->usuarios->getElementsFromTable($consulta);
+	}
+	public function getmateriasbyajax()
+	{
+		$respuesta=$this->catalogos->getcatalogoinfo('id_materia','materia','materias',"where  nivel =$_POST[nivel]");
+		//tipo de respuesta del servidor en este caso texto plano
+		header('Content-Type: text/plain');
+		//convierte el arreglo de datos en un objeto JSON
+    	echo  json_encode($respuesta);
 	}
 }
 
