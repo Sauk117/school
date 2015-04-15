@@ -70,8 +70,8 @@
                 <li ><a href="<?=base_url("index.php/welcome/control")?>">Control de Alumnos</a></li>  
                 <li ><a href="<?=base_url("index.php/welcome/docentes")?>">Docentes</a></li>         
                 <li><a href="<?=base_url("index.php/welcome/controld")?>">Control Docentes</a></li>   
-                <li><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>
-                <li class="active"><a href="<?=base_url("index.php/welcome/usuarios")?>">Usuarios</a></li>      
+                <li class="active"><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>
+                <li ><a href="<?=base_url("index.php/welcome/usuariosin")?>">Usuarios</a></li>      
             </ul>
         </div>
         <div class="panel-body" >

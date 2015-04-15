@@ -20,6 +20,10 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('controld');
 	}
+	public function usuariosin()
+	{
+		$this->load->view('usuariosin');
+	}
 	public function docentes()
 	{
 		$data['paises']=$this->catalogos->getcatalogoinfo('id_pais','nombre','pais','');
