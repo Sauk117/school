@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html >
 <style type="text/css">
     input, input[date], select{

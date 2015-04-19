@@ -4,23 +4,18 @@
     input, input[date], select{
         width: 200px!important;
     }
-
-
     article.second {
         padding: 20px;
         width: 768px;
         margin-left: 159px;
     }
-    
-
     article.second .table .table_th {
         background-color: #A9D5E9;
         color: #436477;
         font-weight: bold;
         height: 30px;
         line-height: 30px;
-    }
-       
+    }  
     article.second .table div {
         background-color: #fff;
         border: 1px solid #95C8DD;
@@ -90,14 +85,14 @@
                 <SELECT  name="turno" id="turno" class="form-control input-sm" >
                     <option value="1" <?php if(isset($alumno) && $alumno["turno"]==1){ echo "selected='selected'";} ?> >Matutino</option>
                     <option value="2" <?php if(isset($alumno) && $alumno["turno"]==2){ echo "selected='selected'";} ?>>Vespertino</option>
-                </SELECT>
+                </SELECT><br><br>
                         <select id="grupo" name = "grupo" class="form-control input-sm">
                             <option value="-1">Seleccione uno</option>
                         </select>
                         <select id="materia" name="materia" class="form-control input-sm">
                             <option value="-1">Seleccione uno</option>
                         </select>
-                        <br>
+                        
                         <input type="submit" value="Buscar" class="btn btn-info btn-block btn-sm"/>
                     </form>
                 </div>
