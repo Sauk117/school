@@ -176,15 +176,20 @@ class usuarios_m extends CI_Model
 			return '000';
 	
 	}
-	function asignar ($id)
+	function asignar ()
 	{
 		$niveles=$this->getElementsFromTable("select id_nivel id, nivel from nivel;");
 
 		foreach ($niveles as $nivel) 
 		{
-			$materias=$this->getElementsFromTable("select * from materias where nivel=$nivel[id];");
-			$grupos=$this->getElementsFromTable("select * from grupo where nivel=$nivel[id]");
-			$tabla[] = array('nivel' =>$nivel , 'materias' => $materias , 'grupos' => $grupos);
+			$grados=$this->getElementsFromTable("select * from grados where nivel=$nivel[id];");
+			foreach ($grados as $grado) 
+			{
+				$materias=$this->getElementsFromTable("select * from materias where grado = $grado[id_grado];");
+				$grupos=$this->getElementsFromTable("select * from grupo where grado = $grado[id_grado];");
+				$nivelCont[] = array('grado' => $grado, 'materias' => $materias	, 'grupos' => $grupos);
+			}
+			$tabla[] = array('nivel' => $nivel , 'contenido' => $nivelCont);
 		}
 		return $tabla;
 	}

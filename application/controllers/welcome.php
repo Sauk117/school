@@ -178,7 +178,8 @@ class Welcome extends CI_Controller {
 	}
 	public function asignar()
 	{
-		$data["info"]=$this->usuarios->asignar($_GET["id"]);
+		$data['docente']= $this->usuarios->getElementById("docentes","where id_docente=".$_GET["id"]);
+		$data["info"]=$this->usuarios->asignar();
 		$this->load->view("asignar",$data);
 	}
 	public function getmaterias()

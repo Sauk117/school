@@ -70,7 +70,8 @@
                 <li ><a href="<?=base_url("index.php/welcome/control")?>">Control de Alumnos</a></li>  
                 <li ><a href="<?=base_url("index.php/welcome/docentes")?>">Docentes</a></li>         
                 <li class="active"><a href="<?=base_url("index.php/welcome/controld")?>">Control Docentes</a></li>   
-                <li><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>     
+                <li><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>
+                <li ><a href="<?=base_url("index.php/welcome/usuarios")?>">Usuarios</a></li>      
             </ul>
         </div>
         <div class="panel-body" >
@@ -79,26 +80,24 @@
         <div class="form-group">  
             <div style="width:100%;text-align:center;margin-top:10%;">
                 <form>
-                    <h3><strong>Nombre del profesor:</strong><?=$info['grupos'][0]["nombre"]?></h3><br/>
-                    <h3><strong>Grupos de <?=$info['grupos'][0]["nivel"]?></strong></h3>
-                    <?php foreach ($info['grupos'] as $grupo  ) {?>
-                    <input type="checkbox" value="<?=$grupo["id_grupo"]?>" name="grupo[]" /><?=$grupo["grupo"]?>
-                    
-                <?php
-                }
-                ?>
-                <h3><strong>Materias</strong></h3>
-                    <?php foreach ($info['materias'] as $materias) {
+                    <h3><strong>Nombre del profesor:&nbsp;</strong><?=$docente["nombre"]?>&nbsp;<?=$docente["apellidop"]?>&nbsp;<?=$docente["apellidom"]?></h3><br/>
+                    <div style="text-align:left;">
+                        <?php 
+                        var_dump($info);
+                        foreach ($info as $nivel) 
+                        {
+                        ?>
+                            <input type="checkbox" value="<?=$nivel['nivel']['nivel']?>" name="nivel[]" id="nivel<?=$nivel['nivel']['id']?>" /><?=$nivel['nivel']['nivel']?><br/>
+                        <?php
+                             foreach ($nivel['contenido'] as $nivelCont) 
+                            {
+                        ?>      <input type="checkbox" value="<?=$nivelCont['grado']['grado']?>" name="nivel[]" id="nivel<?=$nivelCont['grado']['id_grado']?>" /><?=$nivelCont['grado']['grado']?><br/>
 
-                        echo "<h3><strong>Grupo</strong></h3>";
-                        foreach ($materias as $materia) {
-                        ?>                        
-                        <input type="checkbox" value="<?=$materia["id_materia"]?>" name="materias[]" /><?=$materia["materia"]?>
-                    
-                <?php
-                    }
-                }
-                ?>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </div>
                  <center><input type="submit" style="margin-left: 70px;" value="Guardar" class="btn btn-info btn-block"></center>  
                 </form>
              </div> 
