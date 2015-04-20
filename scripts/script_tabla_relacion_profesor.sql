@@ -222,3 +222,13 @@ insert into grupo(grupo,nivel,turno,grado) values(115,3,1,14);
 insert into grupo(grupo,nivel,turno,grado) values(125,3,2,14);
 insert into grupo(grupo,nivel,turno,grado) values(116,3,1,15);
 insert into grupo(grupo,nivel,turno,grado) values(126,3,2,15);
+
+  -- tabla calif 
+  CREATE TABLE `examen`.`calificaciones` (
+  `id_alumno` INT NOT NULL,
+  `cal1` DECIMAL(10,1) NULL,
+  `cal2` DECIMAL(10,1) NULL,
+  `cal3` DECIMAL(10,1) NULL,
+  `prom` DECIMAL(10,1) NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
