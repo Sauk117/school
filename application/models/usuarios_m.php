@@ -176,22 +176,9 @@ class usuarios_m extends CI_Model
 			return '000';
 	
 	}
-	function asignar ()
+	function getNiveles()
 	{
-		$niveles=$this->getElementsFromTable("select id_nivel id, nivel from nivel;");
-
-		foreach ($niveles as $nivel) 
-		{
-			$grados=$this->getElementsFromTable("select * from grados where nivel=$nivel[id];");
-			foreach ($grados as $grado) 
-			{
-				$materias=$this->getElementsFromTable("select * from materias where grado = $grado[id_grado];");
-				$grupos=$this->getElementsFromTable("select * from grupo where grado = $grado[id_grado];");
-				$nivelCont[] = array('grado' => $grado, 'materias' => $materias	, 'grupos' => $grupos);
-			}
-			$tabla[] = array('nivel' => $nivel , 'contenido' => $nivelCont);
-		}
-		return $tabla;
+		return $this->getElementsFromTable("select id_nivel id, nivel from nivel;");
 	}
 	function getusuarios()
 	{
@@ -206,5 +193,25 @@ class usuarios_m extends CI_Model
 		$this->db->set("estatus", $estatus);
 		$this->db->where("id_usuario",$post['id']);
 		$this->db->update("usuario");
+	}
+	function addAsignacion($post)
+	{
+		$this->db->set('id_docente', $post['docente']);
+		$this->db->set('id_nivel', $post['nivel']);
+		$this->db->set('id_grupo', $post['grupo']);
+		$this->db->set('id_materia', $post['materia']);
+		$this->db->insert('do_ni_gr_ma');
+	}
+	function getAsignacion($id)
+	{
+		return $this->getElementsFromTable(
+			"select n.nivel, g.grupo, gr.grado, m.materia
+			from 
+				do_ni_gr_ma rel join nivel n on n.id_nivel=rel.id_nivel
+				join grupo g on g.id_grupo = rel.id_grupo
+				join grados gr on gr.id_grado = g.grado
+				join materias m on m.id_materia = rel.id_materia
+			where rel.id_docente=$id;"
+		);
 	}
 }
