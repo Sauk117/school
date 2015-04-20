@@ -179,7 +179,8 @@ class Welcome extends CI_Controller {
 	public function asignar()
 	{
 		$data['docente']= $this->usuarios->getElementById("docentes","where id_docente=".$_GET["id"]);
-		$data["info"]=$this->usuarios->asignar();
+		$data["niveles"]=$this->usuarios->getNiveles();
+		$data['asignaciones']=$this->usuarios->getAsignacion($_GET["id"]);
 		$this->load->view("asignar",$data);
 	}
 	public function getmaterias()
@@ -203,6 +204,26 @@ class Welcome extends CI_Controller {
 	public function cambiar_estatus()
 	{
 		$respuesta=$this->usuarios->cambiar_estatus($_POST);
+	}
+	public function getGradosByNivel()
+	{
+		$respuesta= $this->catalogos->getcatalogoinfo('id_grado','grado','grados',"where  nivel =$_POST[nivel]");
+		header('Content-Type: text/plain');
+		echo  json_encode($respuesta);	
+	}
+	public function getGruMatByGrado()
+	{
+		$grupos=$this->catalogos->getcatalogoinfo('id_grupo','grupo','grupo',"where  nivel =$_POST[nivel] and grado = $_POST[grado]");
+		$materias=$this->catalogos->getcatalogoinfo('id_materia','materia','materias',"where  nivel =$_POST[nivel] and grado = $_POST[grado]");
+		$respuesta= array('g' => $grupos, 'm' => $materias);
+		header('Content-Type: text/plain');
+		echo  json_encode($respuesta);
+	}
+	public function addAsignacion()
+	{
+		$this->usuarios->addAsignacion($_POST);
+		$data['asignaciones']=$this->usuarios->getAsignacion($_POST["docente"]);
+		$this->load->view('tabla-asignacion',$data);
 	}
 }
 

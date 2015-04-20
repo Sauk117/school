@@ -186,3 +186,39 @@ insert into materias(materia,nivel,grado) values ('Formación Cívica y Ética',
 insert into materias(materia,nivel,grado) values ('Ingles',3,13);
 insert into materias(materia,nivel,grado) values ('Educación Artística',3,13);
 
+-- agregado de grupos
+
+delete from grupo;
+
+insert into grupo(grupo,nivel,turno,grado) values(311,1,1,1);
+insert into grupo(grupo,nivel,turno,grado) values(321,1,2,1);
+insert into grupo(grupo,nivel,turno,grado) values(312,1,1,2);
+insert into grupo(grupo,nivel,turno,grado) values(322,1,2,2);
+insert into grupo(grupo,nivel,turno,grado) values(313,1,1,3);
+insert into grupo(grupo,nivel,turno,grado) values(323,1,2,3);
+insert into grupo(grupo,nivel,turno,grado) values(314,1,1,4);
+insert into grupo(grupo,nivel,turno,grado) values(324,1,2,4);
+insert into grupo(grupo,nivel,turno,grado) values(315,1,1,5);
+insert into grupo(grupo,nivel,turno,grado) values(325,1,2,5);
+insert into grupo(grupo,nivel,turno,grado) values(316,1,1,6);
+insert into grupo(grupo,nivel,turno,grado) values(326,1,2,6);
+
+insert into grupo(grupo,nivel,turno,grado) values(211,2,1,7);
+insert into grupo(grupo,nivel,turno,grado) values(221,2,1,7);
+insert into grupo(grupo,nivel,turno,grado) values(212,2,1,8);
+insert into grupo(grupo,nivel,turno,grado) values(222,2,1,8);
+insert into grupo(grupo,nivel,turno,grado) values(213,2,1,9);
+insert into grupo(grupo,nivel,turno,grado) values(223,2,1,9);
+
+insert into grupo(grupo,nivel,turno,grado) values(111,3,1,10);
+insert into grupo(grupo,nivel,turno,grado) values(121,3,2,10);
+insert into grupo(grupo,nivel,turno,grado) values(112,3,1,11);
+insert into grupo(grupo,nivel,turno,grado) values(122,3,2,11);
+insert into grupo(grupo,nivel,turno,grado) values(113,3,1,12);
+insert into grupo(grupo,nivel,turno,grado) values(123,3,2,12);
+insert into grupo(grupo,nivel,turno,grado) values(114,3,1,13);
+insert into grupo(grupo,nivel,turno,grado) values(124,3,2,13);
+insert into grupo(grupo,nivel,turno,grado) values(115,3,1,14);
+insert into grupo(grupo,nivel,turno,grado) values(125,3,2,14);
+insert into grupo(grupo,nivel,turno,grado) values(116,3,1,15);
+insert into grupo(grupo,nivel,turno,grado) values(126,3,2,15);
