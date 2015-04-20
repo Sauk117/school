@@ -11,7 +11,23 @@ $(document).ready(function(){
 		$.post(urlajax+"/getDocenteS",$("#form-nivelesd").serialize(),gotTable);
 	});
 
+	$("#buscar").keyup(function() {
+		
+         //alert("hola");
+           $.post(urlajax+"/getAlumnosbu",{"buscar":$("#buscar").val()},gotTable);
+        });
+
+	$("#buscard").keyup(function() {
+		
+         //alert("hola");
+           $.post(urlajax+"/getDocentesbu",{"buscard":$("#buscard").val()},gotTable);
+        });
 	
+		$("#buscaru").keyup(function() {
+		
+         //alert("hola");
+           $.post(urlajax+"/getUsuariosbu",{"buscaru":$("#buscaru").val()},gotTable);
+        });
 });
 function gotTable(html)
 {

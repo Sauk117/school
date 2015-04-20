@@ -150,23 +150,23 @@
                 <label>CP</label>
                 <input type="text"  name="cp" id="cp" class="form-control input-sm num" required <?php if(isset($docentes)){echo "value=".$docentes["cp"];}?>  />
                 <label>Colonia</label>
-                <input type="text" name="colonia" id="colonia" class="form-control input-sm " required  />
+                <input type="text" name="colonia" id="colonia" class="form-control input-sm " required <?php if(isset($docentes)){echo "value=".$docentes["colonia"];}?> />
                 <label>Calle</label>
-                <input type="text" name="calle" id="calle" class="form-control input-sm" required  />
+                <input type="text" name="calle" id="calle" class="form-control input-sm" required <?php if(isset($docentes)){echo "value=".$docentes["calle"];}?> />
                 <label>Nº Interior</label>
-                <input type="text" name="ninterior" id="ninterior" class="form-control input-sm" required  />
+                <input type="text" name="ninterior" id="ninterior" class="form-control input-sm" required <?php if(isset($docentes)){echo "value=".$docentes["ninterior"];}?> />
                 <label>Nº Exterior</label>
-                <input type="text" name="nexterior" id="nexterior" class="form-control input-sm" required  />
+                <input type="text" name="nexterior" id="nexterior" class="form-control input-sm" required <?php if(isset($docentes)){echo "value=".$docentes["nexterior"];}?>  />
                 <label>Telefono</label>
-                <input type="text" name="tel" id="tel" class="form-control input-sm num" required  />
+                <input type="text" name="tel" id="tel" class="form-control input-sm num" required <?php if(isset($docentes)){echo "value=".$docentes["tel"];}?> />
                 <label>Celular</label>
-                <input type="text" name="cel" id="cel" class="form-control input-sm num" required  / >
+                <input type="text" name="cel" id="cel" class="form-control input-sm num" required <?php if(isset($docentes)){echo "value=".$docentes["cel"];}?> / >
                 <label>Correo</label>
-                <input type="email" name="correo" id="correo" class="form-control input-sm" required  />
+                <input type="email" name="correo" id="correo" class="form-control input-sm" required <?php if(isset($docentes)){echo "value=".$docentes["correo"];}?> />
                 <label>Matricula</label>
-                <input type="text" name="matricula" id="matricula" class="form-control input-sm num" required disabled/>
+                <input type="text" name="matricula" id="matricula" class="form-control input-sm num" required <?php if(isset($docentes)){echo "value=".$docentes["matricula"];}?> disabled/>
                 <label>Nivel</label>
-                <SELECT name="nivel" id="nivel" class="form-control input-sm">
+                <SELECT name="nivel" id="nivel" class="form-control input-sm"<?php if(isset($docentes)){echo "value=".$docentes["nivel"];}?>>
                     <option value="1">Universidad</option>
                     <option value="2">Secundaria</option>
                     <option value="3">Primaria</option>
@@ -179,7 +179,7 @@
                     <option value="2">Femenino</option>
                 </SELECT>
                 <label>Fecha ingreso</label>
-                <input type="date" name="fingreso" id="fingreso" style="width: 155px;" class="form-control input-sm" required  />
+                <input type="date" name="fingreso" id="fingreso" style="width: 155px;" class="form-control input-sm" required <?php if(isset($docentes)){echo "value=".$docentes["fingreso"];}?>  />
                 <br>
                 <?php 
                 if(isset($docentes)) 

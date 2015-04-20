@@ -112,37 +112,36 @@
         });
     </script>
     <style type="text/css">
-        input, input[date], select{
-            width: 200px!important;
-        }
-        article.second {
-            padding: 20px;
-            width: 768px;
-              margin-left: 159px;
-        }
-        article.second .table .table_th {
-            background-color: #A9D5E9;
-            color: #436477;
-            font-weight: bold;
-            height: 30px;
-            line-height: 30px;
-        }
-        article.second .table div {
-            background-color: #fff;
-            border: 1px solid #95C8DD;
-            color: #195977;
-            display: inline-block;
-            font-size: 11px;
-            height: 25px;
-            line-height: 25px;
-            padding-left: 5px;
-            width: 182px;
-        }   
-        select{
-            float: left;
-            margin-right: 20px!important;
-        }
-        
+       input, input[date], select{
+        width: 200px!important;
+    }
+    article.second {
+        padding: 20px;
+        width: 768px;
+        margin-left: 159px;
+    }
+    article.second .table .table_th {
+        background-color: #A9D5E9;
+        color: #436477;
+        font-weight: bold;
+        height: 30px;
+        line-height: 30px;
+    }  
+    article.second .table div {
+        background-color: #fff;
+        border: 1px solid #95C8DD;
+        color: #195977;
+        display: inline-block;
+        font-size: 11px;
+        height: 25px;
+        line-height: 25px;
+        padding-left: 5px;
+        width: 182px;
+    }   
+    select{
+        float: left;
+        margin-right: 20px!important;
+    }
     </style>
 
 </head>
@@ -171,8 +170,8 @@
                 <section>
                     <div class="form-group">  
                         <div style="width:100%;text-align:center;margin-top:10px;">
-                            <h3><strong>Nombre del profesor:&nbsp;</strong><?=$docente["nombre"]?>&nbsp;<?=$docente["apellidop"]?>&nbsp;<?=$docente["apellidom"]?></h3>
-                            <select id="nivel" name="nivel">
+                            <h3 class="panel-title text-center"><strong>Nombre del profesor:&nbsp;</strong><?=$docente["nombre"]?>&nbsp;<?=$docente["apellidop"]?>&nbsp;<?=$docente["apellidom"]?></h3>
+                            <select id="nivel" name="nivel" class="form-control input-sm">
                                 <?php
                                 echo "<option value='0'>- Seleccione uno</option>";
                                 foreach ($niveles as $nivel) 
@@ -183,13 +182,13 @@
                                 }
                                 ?>    
                             </select>
-                            <select id="grado" name="grado">
+                            <select id="grado" name="grado" class="form-control input-sm">
                                 <option value="0">- Vacío</option>
                             </select>
-                            <select id="grupo" name="grupo">
+                            <select id="grupo" name="grupo" class="form-control input-sm">
                                 <option value="0">- Vacío</option>
                             </select>
-                            <select id="materia" name="materia">
+                            <select id="materia" name="materia" class="form-control input-sm">
                                 <option value="0">- Vacío</option>
                             </select>
                             <input type="submit" id="asignar"style="float:left;display:none" value="Asignar" class="btn btn-info btn-xs"><br/><br/>

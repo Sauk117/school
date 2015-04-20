@@ -133,9 +133,7 @@ class Welcome extends CI_Controller {
 
 	public function getAlumnosbu()
 	{
-		
-		$names = $this->request->getPost('buscar');
-		$consulta="select * from alumno where nombre like 'nombre', '%' . $buscar . '%')";//depende de la condicio de alumnos activos o inactivos
+		$consulta="select * from alumno where nombre like  '%$_POST[buscar]%'";//depende de la condicio de alumnos activos o inactivos
 		$data["headers"]=array("Nombre","Turno","Matricula","Acción");
 		$data["alumnos"]=$this->usuarios->getElementsFromTable($consulta);
 		$this->load->view("vista-de-tabla",$data);	
@@ -161,6 +159,25 @@ class Welcome extends CI_Controller {
 		$data["headers"]=array("Nombre","Nivel","Matricula","Acción");
 		$data["docentes"]=$this->usuarios->getElementsFromTable($consulta);
 		$this->load->view("vista-de-tablad",$data);	
+	}
+	
+		public function getDocentesbu()
+	{	
+		$consulta="select * from docentes where nombre like  '%$_POST[buscard]%'";//depende de la condicio de alumnos activos o inactivos
+		$data["headers"]=array("Nombre","Nivel","Matricula","Acción");
+		$data["docentes"]=$this->usuarios->getElementsFromTable($consulta);
+		$this->load->view("vista-de-tablad",$data);
+		//$consulta="select * from docentes where nombre like  '%$_POST[buscar]%'";//depende de la condicio de alumnos activos o inactivos
+			
+	}
+		public function getUsuariosbu()
+	{	
+		$consulta="select * from usuario where nombre like  '%$_POST[buscaru]%'";//depende de la condicio de alumnos activos o inactivos
+		//$data["headers"]=array("Nombre","Nivel","Matricula","Acción");
+		$data["usuarios"]=$this->usuarios->getElementsFromTable($consulta);
+		$this->load->view("vista-usuarios",$data);
+		//$consulta="select * from docentes where nombre like  '%$_POST[buscar]%'";//depende de la condicio de alumnos activos o inactivos
+			
 	}
 	public function getgrupos()
 	{

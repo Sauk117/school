@@ -71,7 +71,11 @@
                 <li ><a href="<?=base_url("index.php/welcome/docentes")?>">Docentes</a></li>         
                 <li class="active"><a href="<?=base_url("index.php/welcome/controld")?>">Control Docentes</a></li>   
                 <li><a href="<?=base_url("index.php/welcome/calificaciones")?>">Calificaciones</a></li>
-                <li ><a href="<?=base_url("index.php/welcome/usuarios")?>">Usuarios</a></li>      
+                <li ><a href="<?=base_url("index.php/welcome/usuarios")?>">Usuarios</a></li>
+                <li> <div class="form-group">
+                    <input type="text" class="form-control" id="buscard" placeholder="Buscar">
+                    </div>
+                </li>  
             </ul>
         </div>
         <div class="panel-body" >
