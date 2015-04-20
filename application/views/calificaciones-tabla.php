@@ -35,10 +35,10 @@
         ?>
                 <tr>
                     <td><?= $asignacion['nombre'] ?></td>
-                    <td><input type="text" name="cal1[]" class="calif form-control input-sm"></td>
-                    <td><input type="text" name="cal2[]" class="calif form-control input-sm"></td>
-                    <td><input type="text" name="cal3[]" class="calif form-control input-sm"></td>
-                    <td><input type="text" name="prom[]" class="calif form-control input-sm"><input type="hidden" name="alumno[]" value = "<?= $asignacion['id'] ?>"></td>
+                    <td><input type="text" name="cal1[]" class="calif form-control input-sm" value="<?=$asignacion['cal1']?>"></td>
+                    <td><input type="text" name="cal2[]" class="calif form-control input-sm" value="<?=$asignacion['cal2']?>"></td>
+                    <td><input type="text" name="cal3[]" class="calif form-control input-sm" value="<?=$asignacion['cal3']?>"></td>
+                    <td><input type="text" name="prom[]" class="calif form-control input-sm" value="<?=$asignacion['prom']?>"><input type="hidden" name="alumno[]" value = "<?= $asignacion['id'] ?>"></td>
                 </tr>
             <?php endforeach; 
         }?>

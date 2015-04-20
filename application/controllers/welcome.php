@@ -244,7 +244,7 @@ class Welcome extends CI_Controller {
 	public function guardarCalif()
 	{
 		$this->usuarios->guardarCalif($_POST);
-		redirect('welcome/control');
+		redirect('welcome/calificaciones');
 	}
 }
 

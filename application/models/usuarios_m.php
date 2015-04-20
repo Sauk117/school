@@ -217,18 +217,29 @@ class usuarios_m extends CI_Model
 	function getAsignCalif()
 	{
 		
-		return $this->getElementsFromTable("select concat(nombre, ' ',apellidop, ' ', apellidom)nombre, id_alumno id from alumno;");
+		return $this->getElementsFromTable("select concat(nombre, ' ',apellidop, ' ', apellidom)nombre, a.id_alumno id, cal1, cal2, cal3, prom  from alumno a left join calificaciones c on c.id_alumno = a.id_alumno;");
 	}
 	function guardarCalif($post)
 	{
-		for ($i=0; $i <count($post['cal1']) ; $i++) 
+		for ($i=0; $i <count($post['alumno']) ; $i++) 
 		{ 
+			$update = false;
+			$query= $this->db->query("select * from calificaciones where id_alumno=". $post['alumno'][$i]);
+			if($query!=null && $query->num_rows()>0)
+				$update = true;
+			
 			$this->db->set("id_alumno",$post['alumno'][$i]);
 			$this->db->set("cal1",$post['cal1'][$i] != "" ? $post['cal1'][$i] : 0);
 			$this->db->set("cal2",$post['cal2'][$i] != "" ? $post['cal2'][$i] : 0);
 			$this->db->set("cal3",$post['cal3'][$i] != "" ? $post['cal3'][$i] : 0);
 			$this->db->set("prom",$post['prom'][$i] != "" ? $post['prom'][$i] : 0);
-			$this->db->insert('calificaciones');
+			if(!$update)
+				$this->db->insert('calificaciones');
+			else
+			{
+				$this->db->where('id_alumno',$post['alumno'][$i]);
+				$this->db->update('calificaciones');
+			}
 		}
 	}
 }
