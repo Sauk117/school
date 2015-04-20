@@ -130,6 +130,17 @@ class Welcome extends CI_Controller {
 		$data["alumnos"]=$this->usuarios->getElementsFromTable($consulta);
 		$this->load->view("vista-de-tabla",$data);	
 	}
+
+	public function getAlumnosbu()
+	{
+		
+		$names = $this->request->getPost('buscar');
+		$consulta="select * from alumno where nombre like 'nombre', '%' . $buscar . '%')";//depende de la condicio de alumnos activos o inactivos
+		$data["headers"]=array("Nombre","Turno","Matricula","Acción");
+		$data["alumnos"]=$this->usuarios->getElementsFromTable($consulta);
+		$this->load->view("vista-de-tabla",$data);	
+	}
+
 	public function getDocenteById()
 	{
 		$info=$this->usuarios->getElementById("docentes","where id_docente=".$_GET["id"]);
