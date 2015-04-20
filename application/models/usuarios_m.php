@@ -214,4 +214,21 @@ class usuarios_m extends CI_Model
 			where rel.id_docente=$id;"
 		);
 	}
+	function getAsignCalif()
+	{
+		
+		return $this->getElementsFromTable("select concat(nombre, ' ',apellidop, ' ', apellidom)nombre, id_alumno id from alumno;");
+	}
+	function guardarCalif($post)
+	{
+		for ($i=0; $i <count($post['cal1']) ; $i++) 
+		{ 
+			$this->db->set("id_alumno",$post['alumno'][$i]);
+			$this->db->set("cal1",$post['cal1'][$i] != "" ? $post['cal1'][$i] : 0);
+			$this->db->set("cal2",$post['cal2'][$i] != "" ? $post['cal2'][$i] : 0);
+			$this->db->set("cal3",$post['cal3'][$i] != "" ? $post['cal3'][$i] : 0);
+			$this->db->set("prom",$post['prom'][$i] != "" ? $post['prom'][$i] : 0);
+			$this->db->insert('calificaciones');
+		}
+	}
 }

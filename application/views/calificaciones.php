@@ -7,7 +7,7 @@
     article.second {
         padding: 20px;
         width: 768px;
-        margin-left: 159px;
+        
     }
     article.second .table .table_th {
         background-color: #A9D5E9;
@@ -42,9 +42,27 @@
     <script type="text/javascript" src="../../lib/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/general.js"></script>
     <script type="text/javascript" src="../../js/Registro.js"></script> 
-    <script type="text/javascript" src="../../js/control.js"></script> 
+   
     <script>
+        var adding=false; 
         var urlajax="<?= base_url('index.php/welcome/')?>";//url del controlador
+        $(document).ready(function(){
+            $("#form-Calif").submit(function(e){
+                e.preventDefault();
+                if(!adding)
+                {
+                    adding=true;
+                    $.post(
+                        "<?=base_url('index.php/welcome/getAsignCalif')?>",
+                        $("#form-Calif").serialize(),
+                        function(html){
+                            $("#contentTable").empty();
+                            $("#contentTable").append(html);
+                            adding=false;
+                    });
+                }
+            });
+        });
     </script>
 
 
@@ -73,8 +91,8 @@
             <div class="form-group">        
                 
                 <div style="width:100%;text-align:center;margin-top:10%;">
-                <div style="margin-left: 221px;">
-                    <form id="form-niveles" >
+               
+                    <form id="form-Calif" >
                         <select id="nivel" name = "nivel" class="form-control input-sm">
                             <option value="-1">Seleccione uno</option>
                             <option value="1">Universidad</option>
@@ -85,7 +103,7 @@
                 <SELECT  name="turno" id="turno" class="form-control input-sm" >
                     <option value="1" <?php if(isset($alumno) && $alumno["turno"]==1){ echo "selected='selected'";} ?> >Matutino</option>
                     <option value="2" <?php if(isset($alumno) && $alumno["turno"]==2){ echo "selected='selected'";} ?>>Vespertino</option>
-                </SELECT><br><br>
+                </SELECT>
                         <select id="grupo" name = "grupo" class="form-control input-sm">
                             <option value="-1">Seleccione uno</option>
                         </select>
@@ -95,7 +113,7 @@
                         
                         <input type="submit" value="Buscar" class="btn btn-info btn-block btn-sm"/>
                     </form>
-                </div>
+                
                 <article class="second">
                     <section id="contentTable" class="table table_control">
                     <center></center>

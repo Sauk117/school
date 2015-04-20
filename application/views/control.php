@@ -83,7 +83,7 @@
                         <select id="grupo" name = "grupo" class="form-control input-sm">
                             <option value="-1">Seleccione uno</option>
                         </select><br>
-                        <input type="submit" value="Buscar" class="btn btn-info btn-block btn-sm"/>
+                        <input id="search" type="submit" value="Buscar" class="btn btn-info btn-block btn-sm"/>
                     </form>
                 </div>
                 <article class="second">

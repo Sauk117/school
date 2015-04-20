@@ -225,5 +225,15 @@ class Welcome extends CI_Controller {
 		$data['asignaciones']=$this->usuarios->getAsignacion($_POST["docente"]);
 		$this->load->view('tabla-asignacion',$data);
 	}
+	public function getAsignCalif()
+	{
+		$data['asignaciones']=$this->usuarios->getAsignCalif();
+		$this->load->view('calificaciones-tabla',$data);
+	}
+	public function guardarCalif()
+	{
+		$this->usuarios->guardarCalif($_POST);
+		redirect('welcome/control');
+	}
 }
 
